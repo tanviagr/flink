@@ -4,7 +4,7 @@ import org.apache.flink.api.common.functions.FilterFunction;
 import org.apache.flink.streaming.api.datastream.DataStream;
 import org.apache.flink.streaming.api.environment.StreamExecutionEnvironment;
 
-public class FilterStrings {
+public class FilterStringsUsingFilter {
 	
 	public static void main(String[] args) throws Exception {
 		StreamExecutionEnvironment env = 

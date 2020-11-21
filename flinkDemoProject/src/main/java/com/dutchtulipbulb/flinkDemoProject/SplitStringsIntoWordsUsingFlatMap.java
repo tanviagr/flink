@@ -6,7 +6,7 @@ import org.apache.flink.streaming.api.datastream.DataStream;
 import org.apache.flink.streaming.api.environment.StreamExecutionEnvironment;
 import org.apache.flink.util.Collector;
 
-public class Words {
+public class SplitStringsIntoWordsUsingFlatMap {
 
 	public static void main(String[] args) throws Exception {
 		final ParameterTool params = ParameterTool.fromArgs(args);
