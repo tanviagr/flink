@@ -1,3 +1,4 @@
 Manifest-Version: 1.0
-Main-Class: com.dutchtulipbulb.flinkDemoProject.AverageViewsUsingReduce
+Main-Class: com.dutchtulipbulb.flinkDemoProject.WordCountTumblingAndSlid
+ ingWindow
 

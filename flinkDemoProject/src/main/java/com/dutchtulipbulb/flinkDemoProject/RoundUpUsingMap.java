@@ -36,7 +36,7 @@ public class RoundUpUsingMap {
 		
 	}
 	
-	//<Input, Output>
+	//<Input, Output> - for every input you have ONE output.
 	public static class Round implements MapFunction<String, Long> {
 
 		/**
