@@ -5,7 +5,7 @@ import org.apache.flink.api.java.tuple.Tuple2;
 import org.apache.flink.api.java.utils.ParameterTool;
 import org.apache.flink.streaming.api.datastream.DataStream;
 import org.apache.flink.streaming.api.environment.StreamExecutionEnvironment;
-import org.apache.flink.streaming.api.windowing.assigners.TumblingProcessingTimeWindows;
+import org.apache.flink.streaming.api.windowing.assigners.SlidingProcessingTimeWindows;
 import org.apache.flink.streaming.api.windowing.time.Time;
 import org.apache.flink.util.Collector;
 
@@ -21,14 +21,26 @@ public class WordCountTumblingAndSlidingWindow {
 			System.exit(1);
 			return;
 		}
-		/* We want to use Tumbling Window and processing time as the notion of time */
-		DataStream<Tuple2<String, Long>> outputStream = dataStream
+		//We want to use Tumbling Window and processing time as the notion of time 
+		
+		/* ------ TUMBLING WINDOW ------ */
+		/*
+		 * DataStream<Tuple2<String, Long>> outputStream = dataStream
 		.flatMap(new WordCountSplitter())
 		.keyBy(0)
 		.window(TumblingProcessingTimeWindows.of(Time.seconds(10)))
 		.sum(1);
-		/* apply sum aggregation over the entities in that window */
-		/* for every word we want to see how often it occurs in a 10 second window. */
+		*/
+		
+		// apply sum aggregation over the entities in that window 
+		// for every word we want to see how often it occurs in a 10 second window. 
+		
+		DataStream<Tuple2<String, Long>> outputStream = dataStream
+				.flatMap(new WordCountSplitter())
+				.keyBy(0)
+				.window(SlidingProcessingTimeWindows.of(Time.seconds(20), Time.seconds(10)))
+				.sum(1);
+		/* sliding interval is how much overlap exists between windows */
 		
 		outputStream.print();
 		
