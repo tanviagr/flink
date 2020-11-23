@@ -1,6 +1,6 @@
 # flink
 Name of the course followed - PluralSight#Getting Started with Stream Processing Using Apache Flink
-Understanding Flink through small demonstrations
+
 
 In order to access the Twitter API - 
 1. We need the (Access Token, Secret Key), and (API Key, Secret)
